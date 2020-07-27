@@ -1,0 +1,16 @@
+name: C/C++ CI Test 
+
+on:
+  schedule:
+  - cron: '*/5 * * * *'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+    - name: test
+      run: ./test
