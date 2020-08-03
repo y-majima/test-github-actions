@@ -14,6 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: clone private repos
+      uses: actions/checkout@v2
+      with:
+       repository: 'y-majima/a-private-repo-test'
+       token: ${{secrets.ACCESS_TOKEN}}
     - name: make
       run: make
     - name: test
