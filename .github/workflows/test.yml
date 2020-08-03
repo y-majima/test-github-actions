@@ -14,12 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+       path: test-github-actions
     - name: clone private repos
       uses: actions/checkout@v2
       with:
        repository: 'y-majima/a-private-repo-test'
        token: ${{secrets.ACCESS_TOKEN}}
+       path: a-private-repo-test
     - name: make
-      run: make
+      run: cd $GITHUB_WORKSPACE/test-github-actions && make
     - name: test
-      run: ./test
+      run: $GITHUB_WORKSPACE/test-github-actions/test
